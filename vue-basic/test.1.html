@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-bind练习</title>
+		<!-- 通过cdn引入Vue-->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.container {
+				display: flex;
+				flex-direction: column;
+				width: 80%;
+				margin: 0 auto;
+			}
+
+			.card {
+				display:flex;
+				border-radius: 10px;
+			}
+			.card img{
+				border-radius:60%;
+				width: 60px;
+				height: 60px;
+			}
+			.message{
+				margin-left: 15px;
+				margin-top: 20px;
+			}
+			.hand{
+				display: flex;
+			}
+			.name{
+				width: 50px;
+			}
+			.left,
+			.no-left{
+				position: relative;
+				margin-left: 120px;
+				margin-top: -1px;
+			}
+			.left{
+				color: #ADFF2F;
+			}
+			.no-left{
+				color: #FF0000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h3>推荐作者</h3>
+			<div class="container">
+			<div class="container" v-for="message in messages">
+				<!-- 通过循环遍历books数组 -->
+				<div class="card">
+					<img :src="message.photo" >
+					<div id="message">
+						<div class="hand">
+							<div class="name">{{message.name}}</div>
+								<p class="left" v-if="message.like">+已关注</p>
+								<p class="no-left" v-else>✓已关注</p>
+						</div>
+							<div class="right">{{message.message}}</div>
+						</div>
+						</div>
+					</div>
+				</div>
+				</div>
+		
+		<script type="text/javascript">
+			//实例化一个vue对象
+			var app = new Vue({
+				el: "#app",
+				data: {
+					show: true,
+					messages: [{
+						photo:'img/photo1.jpg',
+						name:'胡七筒',
+						message:'写了325k字 11k喜欢',
+						like:true
+					},
+					{
+						photo:'img/photo2.jpg',
+						name:'王波',
+						message:'写了302.1k字 1.9k喜欢',
+						like:false
+					},
+					{
+						photo:'img/photo3.jpg',
+						name:'梅拾樱',
+						message:'写了269.3k字 23.4k喜欢',
+						like:true
+					},
+					{
+						photo:'img/photo4.jpg',
+						name:'徐林',
+						message:'写了677.9k字 5.5k喜欢',
+						like:false
+					},
+					{
+						photo:'img/photo5.jpg',
+						name:'老王',
+						message:'写了535.1k字 51.8k喜欢',
+						like:false
+					},
+				]
+			}
+		})
+		</script>
+	</body>
+</html>

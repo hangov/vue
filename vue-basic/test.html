@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-bind练习</title>
+		<!-- 通过cdn引入Vue-->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.container {
+				display: flex;
+				width: 80%;
+				margin: 0 auto;
+			}
+
+			.card {
+				width: 400px;
+				height: 350px;
+				margin-right: 30px;
+				border: 3px solid #EEE;
+				border-radius: 10px;
+
+			}
+			.left{
+				display:flex;
+			}
+
+			.tu {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.tu img {
+				width: 45px;
+				height: 45px;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2 v-if="show">进行中的班课</h2>
+			<div class="container">
+				<!-- 通过循环遍历books数组 -->
+				<div class="card" v-for="book in books">
+					<!-- 显示图书名称 -->
+					<!-- <h4>{{book.name}}</h4> -->
+					<!-- 绑定图书的封面属性 -->
+					<img :src="book.cover">
+					<p>{{book.name}}</p>
+
+					<p>{{book.class}}</p>
+					<div class="tu">
+						<div class="left">
+							<img :src="book.phone">
+							<p>{{book.teacher}}</p>
+						</div>
+						<div class="right">
+							<p v-if="book.number">123465</p>
+							<p v-else></p>
+						</div>
+
+					</div>
+
+
+					<!-- 判定like的值，显示不同文字 -->
+
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//实例化一个vue对象
+			var app = new Vue({
+				el: "#app",
+				data: {
+					show: true,
+					books: [{
+							class: '软件1721',
+							name: 'jsp',
+							teacher: '王萍',
+							cover: 'img/jsp.jpg',
+							phone: 'img/photo1.jpg',
+							like: false
+						},
+						{
+							class: '软件1721',
+							name: 'spring',
+							teacher: '许莫淇',
+							cover: 'img/spring.jpg',
+							phone: 'img/photo1.jpg',
+							like: false
+						},
+						{
+							class: '软件1721',
+							name: 'vue',
+							teacher: '许莫淇',
+							cover: 'img/vue.jpg',
+							phone: 'img/photo2.jpg',
+							like: false
+						},
+						{
+							class: '软件1721',
+							name: 'web',
+							teacher: '王萍',
+							number: '123465',
+							cover: 'img/web.png',
+							phone: 'img/photo1.jpg',
+
+							like: true
+						},
+
+					]
+				}
+			})
+		</script>
+
+	</body>
+</html>
