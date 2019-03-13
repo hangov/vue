@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- 通过cdn引入vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<style type="text/css">
+			.head {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				height: 60px;
+				background: rgb(150,220, 15);
+			}
+
+			#app {
+				background-image: url(img/1.jpg);
+				background-position: center;
+					background-size:100% 100%;
+			}
+
+			.brand-logo {
+				color: #FFF;
+				font-size: 35px;
+				margin-left: 15px;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			#right-nav {
+				display: flex;
+			}
+
+			#right-nav li {
+				list-style: none;
+				padding-right: 15px;
+			}
+
+			#right-nav li a {
+				color: #FFF;
+			}
+
+			#right-nav li a:hover {
+				text-decoration: underline;
+			}
+
+			.content {
+				width: 80%;
+				height: 650px;
+				margin: 0 auto;
+				margin-top: 30px;
+				
+			}
+
+			.wname {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+
+			.a {
+				width: 200px;
+				height: 40px;
+				border-radius: 10px;
+				margin-left: 10px;
+				border: 1px solid #DDDDDD;
+				outline: none;
+			}
+			.password {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 43px;
+			}
+			.sex {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 43px;
+			}
+
+			.c {
+				margin-top: 15px;
+				margin-left: 5px;
+			}
+
+			.papers {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+
+
+			.nus {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 43px;
+			}
+
+
+
+			.intr {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+
+
+
+			.hobby {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 43px;
+			}
+
+			.f {
+				margin-top: 14px;
+			}
+
+			.footer {
+				margin-left: 80px;
+			}
+
+			.g {
+				width: 200px;
+				height: 50px;
+				border-radius: 10px;
+				border: 1px solid #DDDDDD;
+				outline: none;
+				background-color: rgb(234, 111, 90);
+				color: #FFFFFF;
+
+			}
+		</style>
+	</head>
+	<body>
+		<!-- vue-app根容器 -->
+		<div id="app">
+			<div class="head">
+				<a href="#" class="brand-logo">注册用户</a>
+				<ul id="right-nav">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">邮箱账号</a></li>
+					<li><a href="#">意见反馈</a></li>
+				</ul>
+			</div>
+			<div class="content">
+				<div class="wname">
+					<h3>账号名称:</h3>
+					<input v-model="netname" placeholder="用户名" class="a">
+				</div>
+				<div class="password">
+					<h3>密码:</h3>
+					<input type="password" v-model="password" placeholder="密码" class="a">
+				</div>
+				<div class="password">
+					<h3>确认密码:</h3>
+					<input type="password" v-model="passwordC" placeholder="确认密码" class="a">
+				</div>
+				<div class="sex">
+					<h3>性别:</h3>
+					<div class="c">
+						<input type="radio" id="male" value="男" v-model="sex" />
+						<label>男</label>
+						<input type="radio" id="female" value="女" v-model="sex">
+						<label for="female">女</label>
+					</div>
+				</div>
+				<div class="papers">
+					<h3>居住地</h3>
+					<select v-model="selected" class="a">
+						<option selected="selected" value="">北京</option>
+						<option value="">天津</option>
+						<option>河北</option>
+						<option>辽宁</option>
+						<option>山东</option>
+						<option>河南</option>
+						<option>安徽</option>
+						<option>上海</option>
+						<option>江苏</option>
+						<option>江西</option>
+						<option>浙江</option>
+						<option>福建</option>
+						<option>湖南</option>
+						<option>湖北</option>
+						<option>陕西</option>
+						<option>重庆</option>
+						<option>四川</option>
+						<option>贵州</option>
+						<option>广州</option>
+						<option>云南</option>
+						<option>甘肃</option>
+						<option>宁夏</option>
+						<option>青海</option>
+						<option>西藏</option>
+						<option>新疆</option>
+					</select>
+				</div>
+				<div class="nus">
+					<h3>手机号</h3>
+					<input v-model="num" placeholder="请输入手机号" class="a" />
+				</div>
+				<div class="intr">
+					<h3>个人简介</h3>
+					<textarea v-model="message2" class="a"></textarea>
+				</div>
+				<div class="hobby">
+					<h3>爱好：</h3>
+					<div class="f">
+						<input type="checkbox" id="ge" value="唱歌" v-model="hobby">
+						<label for="baidu">唱歌</label>
+						<input type="checkbox" id="wu" value="跳舞" v-model="hobby">
+						<label for="google">跳舞</label>
+						<input type="checkbox" id="shu" value="阅读" v-model="hobby">
+						<label for="tencent">阅读</label>
+						<input type="checkbox" id="aa" value="其他" v-model="hobby">
+						<label for="other">其他</label>
+					</div>
+				</div>
+				<div class="footer">
+					<button type="button" @click="commit" class="g">提交</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					netname:'',
+					password:'',
+					passwordC:'',
+					sex:'',
+					selected:'',
+					num:'',
+					message2:'',
+					hobby:[]
+				},
+				methods: {
+					commit: function() {
+						alert("您注册的内容\n昵称:" + this.netname +"\n密码："+this.password+ "\n性别：" + this.sex +
+							"\n居住地：" + this.selected + "\n手机号：" + this.num +
+							"\n个人简介：" + this.message2 +
+							"\n你的爱好一共有：" + this.hobby.length + "个，有" + this.hobby);
+
+					}
+					
+				}
+			})
+		</script>
+
+	</body>
+</html>
